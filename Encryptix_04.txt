@@ -1,0 +1,91 @@
+#include <iostream> 
+#include <vector>
+#include <string>
+struct Tasks{
+    std::string description;
+    bool task_status;
+};
+void add_task(std::vector<Tasks>& tasks){
+    std::string desc;
+    std::cout<< "Enter the task description: ";
+    std::cin.ignore();
+    getline(std::cin,desc);
+    tasks.push_back({desc,false});
+    std::cout<< "Task entered succesfully"<<std::endl;
+    std::cout<< "-------------------------------------------"<<std::endl;
+}
+void view_task(std::vector<Tasks>& tasks){
+    if (tasks.empty()) {
+        std::cout<< "No tasks available."<<std::endl;
+        return;
+    }
+    int n=tasks.size();
+    for(std::size_t i = 0;i<=n-1;i++){
+        std::cout<< tasks[i].description;
+        std::cout<<"( "<< (tasks[i].task_status? "Done": "Pending")<<" )"<< std::endl;
+    }
+    std::cout<< "-------------------------------------------"<<std::endl;
+}
+void remove_task(std::vector<Tasks>& tasks){
+    if (tasks.empty()){
+        std::cout<< "No tasks available."<<std::endl;
+        return;
+    }
+    int n=tasks.size();
+    int task_no;
+    std::cout<<"Enter task number to be removed: ";
+    std::cin>>task_no;
+    if(task_no >0 && task_no<=n){
+        tasks.erase(tasks.begin() + task_no - 1);
+        std::cout<< "Task removed successfully."<<std::endl;
+    }
+    else{
+        std::cout<< "Enter a valid task number"<<std::endl;
+    }
+    std::cout<< "-------------------------------------------"<<std::endl;
+    
+}
+void modify_status(std::vector<Tasks>& tasks){
+    int task_no;
+    std::cout<<"Enter task number to be modified: ";
+    std::cin>>task_no;
+    int n=tasks.size();
+    if(task_no >0 && task_no<=n){
+        tasks[task_no - 1].task_status=true;
+        std::cout<< "Task status modified successfully."<<std::endl;
+    }
+    else{
+        std::cout<< "Enter a valid task number"<<std::endl;
+    }
+    std::cout<< "-------------------------------------------"<<std::endl;
+    
+}
+
+int main(){
+    std::vector<Tasks> tasks;
+    int choice;
+    do{
+    std::cout<< "The follwing are the operation sthat can be performed in the task list"<<std::endl;
+    std::cout<<"1. Add task"<<std::endl;
+    std::cout<<"2. View task"<<std::endl;
+    std::cout<<"3. Remove task"<<std::endl;
+    std::cout<<"4. Change task status"<<std::endl;
+    std::cout<<"Enter a number between 1-4 to carry out necessary function: ";
+    std::cin>>choice;
+    switch(choice){ 
+        case 1: add_task(tasks);
+                break;
+        case 2: view_task(tasks);
+                break;
+        case 3: remove_task(tasks);
+                break;
+        case 4: modify_status(tasks);
+                break;
+        case 5: std::cout<< "Exit"; 
+                break;
+        default: std::cout<< "Invalid choice."<<std::endl;
+    }
+    }while(choice!=5);
+    return 0;
+}
+    

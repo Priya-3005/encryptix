@@ -1,0 +1,27 @@
+#include <iostream>
+#include <cstdlib>
+
+int main() { 
+    std::cout<<"This is a number guessing game using C++"<<std::endl;
+    int random_num = 1+ (rand() % 100); 
+    int num_guessed=0;
+    do{
+        std::cout<<"Enter a number between 1-100 ";
+        std::cin>>num_guessed;
+        
+    
+    if(num_guessed>random_num){
+        std::cout<< "Guessed number is too high, Try again"<<std::endl;
+    }
+    else if(num_guessed<random_num){
+        std::cout<< "Guessed number is too low, Try again"<<std::endl;
+    }
+    else{
+        std::cout<< "Congratulations, you guessed it right"<<std::endl;
+        
+    }
+}while(num_guessed != random_num);
+    
+
+    return 0;
+}

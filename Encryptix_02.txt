@@ -1,0 +1,28 @@
+#include <iostream> 
+
+int main(){
+    int num1,num2;                      //Declare two variables
+    std::cout<<"Enter two numbers : ";
+    std::cin>>num1>>num2;                    //Get input from user
+    std::cout<<"Following are the operations that can be performed in the calculator."<<std::endl;
+    std::cout<<"1 - for addition"<<std::endl;
+    std::cout<<"2 - for subtraction"<<std::endl;
+    std::cout<<"3 - for multiplication"<<std::endl;
+    std::cout<<"4 - for division"<<std::endl;
+    int n;
+    std::cout<< "Enter a number from 1-4 to choose an operation.";
+    std::cin>>n;
+    switch(n){
+        case 1: std::cout<<num1<<" + "<<num2<<" = "<<num1+num2<<std::endl;
+                break;
+        case 2: std::cout<<num1<<" - "<<num2<<" = "<<num1-num2<<std::endl;
+                break;
+        case 3: std::cout<<num1<<" * "<<num2<<" = "<<num1*num2<<std::endl;
+                break;
+        case 4: std::cout<<num1<<" / "<<num2<<" = "<<num1/num2<<std::endl;
+                break;
+        default: std::cout<<"Enter a valid choice"<<std::endl;
+    }
+
+
+}
